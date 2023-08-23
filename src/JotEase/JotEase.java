@@ -91,6 +91,19 @@ public class JotEase extends JFrame {
 
         setJMenuBar(menubar);// Add menubar to the screen
 
+//         Creating a text area
+        JTextArea textArea = new JTextArea();
+        textArea.setFont(new Font("SAN_SERIF", Font.PLAIN, 18));
+
+//        Wrap lines and words
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+
+//        Creating a scroll bar
+        JScrollPane pane = new JScrollPane(textArea);
+        pane.setBorder(BorderFactory.createEmptyBorder());
+        add(pane);
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);// Open window in full-screen
         setVisible(true);
     }
