@@ -8,6 +8,7 @@ import java.io.*;
 
 public class JotEase extends JFrame implements ActionListener {
     JTextArea textArea;
+    String text;
 
     JotEase(){
         setTitle("Note");
@@ -57,19 +58,24 @@ public class JotEase extends JFrame implements ActionListener {
 
 //         Creating Edit menu
         JMenu edit = new JMenu("Edit");
+        edit.addActionListener(this);
         edit.setFont(new Font("AERIAl",Font.PLAIN,14));
 
 //         Creating Edit menu items and mnemonics
         JMenuItem copy= new JMenuItem("Copy");
+        copy.addActionListener(this);
         copy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
 
         JMenuItem paste = new JMenuItem("Paste");
+        paste.addActionListener(this);
         paste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK));
 
         JMenuItem cut = new JMenuItem("Cut");
+        cut.addActionListener(this);
         cut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
 
-        JMenuItem selectAll = new JMenuItem("Print");
+        JMenuItem selectAll = new JMenuItem("Select All");
+        selectAll.addActionListener(this);
         selectAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
 
 //        Appending menu items to edit menu
@@ -180,6 +186,15 @@ public class JotEase extends JFrame implements ActionListener {
         } else if (actionEvent.getActionCommand().equals("Exit")) {
 //            Exit the App
             System.exit(0);
+        } else if (actionEvent.getActionCommand().equals("Copy")) {
+           text = textArea.getSelectedText();
+        } else if(actionEvent.getActionCommand().equals("Paste")){
+            textArea.insert(text,textArea.getCaretPosition());
+        } else if (actionEvent.getActionCommand().equals("Cut")) {
+            text = textArea.getSelectedText();
+            textArea.replaceRange("",textArea.getSelectionStart(),textArea.getSelectionEnd());
+        } else if (actionEvent.getActionCommand().equals("Select All")) {
+            textArea.selectAll();
         }
     }
 
