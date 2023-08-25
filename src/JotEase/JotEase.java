@@ -58,7 +58,7 @@ public class JotEase extends JFrame implements ActionListener {
 
 //         Creating Edit menu
         JMenu edit = new JMenu("Edit");
-        edit.addActionListener(this);
+//        edit.addActionListener(this);
         edit.setFont(new Font("AERIAl",Font.PLAIN,14));
 
 //         Creating Edit menu items and mnemonics
@@ -86,21 +86,22 @@ public class JotEase extends JFrame implements ActionListener {
 
 
 //         Creating Help menu
-        JMenu helpmenu = new JMenu("Help");
-        helpmenu.setFont(new Font("AERIAl",Font.PLAIN,14));
+        JMenu help = new JMenu("Help");
+        help.setFont(new Font("AERIAl",Font.PLAIN,14));
 
 //         Creating Edit menu items and mnemonics
-        JMenuItem help= new JMenuItem("Help");
-        help.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
+        JMenuItem about= new JMenuItem("About JotEase");
+        about.addActionListener(this);
+        about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
 
 //        Appending menu items to edit menu
-        helpmenu.add(help);
+        help.add(about);
 
 
 //         Appending menus to the menu bar
         menubar.add(file);
         menubar.add(edit);
-        menubar.add(helpmenu);
+        menubar.add(help);
 
 //      Add menubar to the screen
         setJMenuBar(menubar);
@@ -195,6 +196,8 @@ public class JotEase extends JFrame implements ActionListener {
             textArea.replaceRange("",textArea.getSelectionStart(),textArea.getSelectionEnd());
         } else if (actionEvent.getActionCommand().equals("Select All")) {
             textArea.selectAll();
+        } else if (actionEvent.getActionCommand().equals("About")) {
+            
         }
     }
 
