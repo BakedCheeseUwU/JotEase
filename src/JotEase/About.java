@@ -13,15 +13,19 @@ public class About extends JFrame {
 //        since JLabel is a class in Swing, it doesn't accept an awt object (i2)
 //        (JLabel doesn't accept object of Image class)so we have to convert it back to ImageIcon object (i3)
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("JotEase/icons/windows.png"));
-        Image i2 = i1.getImage().getScaledInstance(300,60,Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel headerIcon = new JLabel(i3);
+        ImageIcon originalImage = new ImageIcon(ClassLoader.getSystemResource("JotEase/icons/windows.png"));
+        Image downscaledImage = originalImage.getImage().getScaledInstance(300,60,Image.SCALE_DEFAULT);
+        ImageIcon finalImage = new ImageIcon(downscaledImage);
+        JLabel headerIcon = new JLabel(finalImage);
 
 //        Places the image on top of the window
         headerIcon.setBounds(70,40,400,80);
         add(headerIcon);
 
+        JLabel text = new JLabel("<html><p>JotEase is a lightweight and user-friendly notepad clone developed in Java,designed to provide a seamless and efficient text editing experience.</p><html>");
+        text.setBounds(100,150,400,200);
+        text.setFont(new Font("SAN SERIF",Font.PLAIN,20));
+        add(text);
 
         setVisible(true);
     }
