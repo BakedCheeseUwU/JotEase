@@ -2,8 +2,9 @@ package JotEase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class About extends JFrame {
+public class About extends JFrame implements ActionListener {
     About(){
 //        Opens a window with preset dimensions
         setBounds(700,300,600,500);
@@ -27,7 +28,19 @@ public class About extends JFrame {
         text.setFont(new Font("SAN SERIF",Font.PLAIN,20));
         add(text);
 
+//        Adds Button to the about page
+        JButton button = new JButton("OK");
+        button.setBounds(400,400,120,25);
+        button.addActionListener(this);
+        add(button);
+
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed (ActionEvent actionEvent){
+//        Closes the window
+        this.setVisible(false);
     }
     public static void main(String[] args) {
         new About();

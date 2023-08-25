@@ -196,8 +196,8 @@ public class JotEase extends JFrame implements ActionListener {
             textArea.replaceRange("",textArea.getSelectionStart(),textArea.getSelectionEnd());
         } else if (actionEvent.getActionCommand().equals("Select All")) {
             textArea.selectAll();
-        } else if (actionEvent.getActionCommand().equals("About")) {
-            
+        } else if (actionEvent.getActionCommand().equals("About JotEase")) {
+            new About().setVisible(true);
         }
     }
 
